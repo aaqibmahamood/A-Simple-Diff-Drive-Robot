@@ -8,11 +8,33 @@
 
 # A Simple Differential Drive Robot
 
-**Robot Motion planning** is a computational problem to find a sequence of valid configurations that moves the robot from the source to the destination. Generally, it includes **Path Searching** and **Trajectory Optimization**.
+Welcome to the GitHub repository for a straightforward yet versatile robotics project! This repository hosts the code and simulation files for a 2-wheel robot with a caster, equipped with a lidar sensor for environment mapping using various SLAM (Simultaneous Localization and Mapping) packages.
 
-* **Path Searching**: Based on path constraints, e.g., obstacles, it searches an optimal path sequence for the robot to travel without collisions from the source to the destination.
+**Key Features:**
+- **Robot Design:** The robot's mechanical design was crafted using Fusion 360, providing a detailed and realistic representation of the physical robot. The model was then exported as a URDF (Unified Robot Description Format) file for simulation purposes.
 
-* **Trajectory Planning**: Based on kinematics, dynamics and obstacles, it optimizes a motion state trajectory from the source to the destination according to the path sequence.
+- **Simulation Environment:** The robot comes to life in the Gazebo simulator, featuring a realistic physics engine for accurate behavior. Rviz is integrated into the simulation setup for visualizing sensor data and robot movements.
+
+- **Mapping Capability:** Gmapping SLAM package has been employed for mapping the environment. The robot, equipped with a lidar sensor, creates a 2D occupancy grid map of its surroundings, aiding in understanding and navigating within the simulated world.
+
+- **Custom Gazebo World:** To enhance the simulation experience, a custom world with various objects has been created in Gazebo. This allows for a more diverse testing environment, simulating real-world scenarios.
+
+- **Teleoperation Control:** While the robot does not possess autonomous navigation capabilities, it can be controlled using the teleop_key package. This enables users to remotely control the robot's movement, making it a hands-on and interactive experience.
+
+**How to Use:**
+1. Clone this repository to your local machine using the following command:
+   ```bash
+   git clone https://github.com/aaqibmahamood/A-Simple-Diff-Drive-Robot.git
+   ```
+
+2. Follow the provided documentation in the repository to set up the simulation environment and launch the robot in Gazebo along with Rviz.
+
+3. Control the robot using the teleop_key package to explore the simulated environment and observe its mapping capabilities.
+
+**Reporting Issues:**
+If you encounter any issues or have suggestions for improvement, please raise an issue on the GitHub repository. Your feedback is valuable, and I will actively work to address and resolve any problems you may encounter.
+
+Happy simulating!
 
 **Your stars, forks and PRs are welcome!**
 
@@ -22,13 +44,10 @@
 - [Quick Start](#0)
 - [Model](#1)
 - [Simulation](#2)
-- [Control Robot Movement](#3)
-- [Papers](#4)
-- [Application on a Real Robot](#5)
-- [Important Updates](#6)
-- [Acknowledgments](#7)
-- [License](#8)
-- [Maintenance](#9)
+- [Gmapping](#3)
+- [Control Robot Movement](#4)
+- [Saving Map](#5)
+- [Acknowledgment](#6)
 
 ## <span id="0">0. Quick Start
 
@@ -85,12 +104,12 @@ Both the right wheel and left wheel have been assigned Revolute Joints and lidar
 
 **Run ROS Master**
 ```
-roslaunch myrobot_description gazebo.launch
+roscore
 ```
 **To Load the Robot in Gazebo simulator and rviz use the following commands in separate terminals:**
 * **Load Robot in Gazebo**
 ```
-roslaunch myrobot_description gazebo.launch
+roslaunch rmpbot01_description gazebo.launch
 ```
 * **Start Rviz for visualisation**
 ```
@@ -107,11 +126,12 @@ rviz
   ![fixedframe.png](assets/fixedframe.png)
   ![fixedframe2.png](assets/fixedframe2.png)
 
+## <span id="3">0. Gmapping
 ### Open another terminal to run the following command for mapping using Gmapping package
 
 * **Run Launch file having Gmapping Package**
 ```
-roslaunch myrobot_description mapping.launch
+roslaunch rmpbot01_description mapping.launch
 ``` 
 * **Add Robot Model in Rviz**
   - Add and Select Map.
@@ -119,16 +139,17 @@ roslaunch myrobot_description mapping.launch
 
   - Select Topic in Map to /map.
   ![map_topic](assets/map_topic.png)
+
   - Add and Select Laserscan.
-  ![cover.png](laserscan/cover.png)
+  ![laserscan.png](assets/laserscan.png)
 
   - Set Topic to /scan.
-  ![cover.png](/cover.png)
+  ![laserscan_topic.png](assets/laserscan_topic.png)
 
   - Increase the size parameter of the laser scan to 0.05(m)
-  ![cover.png](assets/cover.png)
+  ![size.png](assets/size.png)
 
-## <span id="3">0. Control Robot Movement
+## <span id="4">0. Control Robot Movement
 
 ## Keyboard teleop mode:
 The ~/catkin_ws/src/myrobot_control/scripts folder contains the *myrobot_key* node, which is the teleop node. There is already a standard teleop node implementation available (for the turtlebot), we simply reused the node. Then a remapping is done from the turtlebot_teleop_keyboard/cmd_vel to /cmd_vel of our robot in the *keyboard_teleop.launch* file.
@@ -139,19 +160,17 @@ The ~/catkin_ws/src/myrobot_control/scripts folder contains the *myrobot_key* no
 ```
 roslaunch teleop_twist_keyboard teleop_twist_keyboard.py
 ```
-
-* Start RViz to visualize the robot state:
-```
-rosrun rviz rviz
-```
-7. Use **2D Nav Goal** to select the goal.
-
-8. Moving!
+![teleop_key.png](assets/teleop_key.png)
 Here are some keyboard controls for Teleop Twist Keyboard: 
 i: Forward
 ,: Backwards
 k: Stop
 j: Rotate left in place
 l: Rotate right in place
+![teleop_key.png](assets/teleop_key.png)
 
-Notice that the teleop node receives keypresses only when the terminal window is active.
+**Notice that the teleop node receives keypresses only when the terminal window is active.**
+![mapping.png](assets/mapping.png)
+
+## <span id="5">0. Saving Map
+## <span id="6">0. Acknowledgement
