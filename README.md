@@ -38,7 +38,8 @@ Happy simulating!
 
 **Your stars, forks and PRs are welcome!**
 
-<video width="630" height="300" src="[https://github.com/aaqibmahamood/A-Simple-Diff-Drive-Robot/blob/131295d60df13d0b4a5212e68bd59863bbd451b8/diff-drive.mp4.mp4]"></video>
+https://github.com/aaqibmahamood/A-Simple-Diff-Drive-Robot/assets/85380716/7f00150c-f4b5-42d1-a4b6-88d143a5c816
+
 
 ## Table of Contents
 - [Quick Start](#0)
