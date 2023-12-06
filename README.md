@@ -90,11 +90,11 @@ Modelled in Fusion 360
 
 **Links and Joints:**
 
-1.base_link
-2.lidar_1
-3.right_wheel_1
-4.left_wheel_1
-5.caster_1
+1. base_link
+2. lidar_1
+3. right_wheel_1
+4. left_wheel_1
+5. caster_1
 
 *Both the right wheel and left wheel have been assigned Revolute Joints and lidar_1 has been assigned Rigid Joint with respect to base_link. Exported URDF file from Fusion360 using URDF_Exporter plugin.
 
@@ -161,11 +161,11 @@ roslaunch teleop_twist_keyboard teleop_twist_keyboard.py
 ```
 Here are some keyboard controls for Teleop Twist Keyboard: 
 
-i: Forward
-,: Backwards
-k: Stop
-j: Rotate left in place
-l: Rotate right in place
+1. Forward
+2. Backwards
+3. Stop
+4. Rotate left in place
+5. Rotate right in place
 ![teleop_key.png](assets/teleop_key.png)
 
 **Notice that the teleop node receives keypresses only when the terminal window is active.**
