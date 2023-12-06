@@ -84,22 +84,21 @@ Happy simulating!
     # you may need to install it by: sudo apt install python-catkin-tools
     ```
 
-    **NOTE: Changing some launch files DOES NOT work, because some of them are re-generated according to the `src/user_config/user_config.yaml` by a python script when you run `main.sh`. Therefore, you should change configurations in `user_config.yaml` instead of launch files.**
-
-## <span id="1">0. Model
+## <span id="1">1. Model
 
 Modelled in Fusion 360
 
-**Links and Joints**
+**Links and Joints:**
+
 1.base_link
 2.lidar_1
 3.right_wheel_1
 4.left_wheel_1
 5.caster_1
 
-Both the right wheel and left wheel have been assigned Revolute Joints and lidar_1 has been assigned Rigid Joint with respect to base_link. Exported URDF file from Fusion360 using URDF_Exporter plugin.
+*Both the right wheel and left wheel have been assigned Revolute Joints and lidar_1 has been assigned Rigid Joint with respect to base_link. Exported URDF file from Fusion360 using URDF_Exporter plugin.
 
-## <span id="2">0. Simulation
+## <span id="2">2. Simulation
 ## Run the Model
 
 **Run ROS Master**
@@ -119,14 +118,14 @@ rviz
 ![pause.png](assets/pause.png)
 
 * **Add Robot Model in Rviz**## <span id="0">0. Quick Start
-  - Add and Select Robot Model.
-  ![robotmodel.png](assets/robotmodel.png)
+- Add and Select Robot Model.
+![robotmodel.png](assets/robotmodel.png)
 
-  - Set Fixed Frame to base_link
-  ![fixedframe.png](assets/fixedframe.png)
-  ![fixedframe2.png](assets/fixedframe2.png)
+- Set Fixed Frame to base_link
+![fixedframe.png](assets/fixedframe.png)
+![fixedframe2.png](assets/fixedframe2.png)
 
-## <span id="3">0. Gmapping
+## <span id="3">3. Gmapping
 ### Open another terminal to run the following command for mapping using Gmapping package
 
 * **Run Launch file having Gmapping Package**
@@ -134,34 +133,34 @@ rviz
 roslaunch rmpbot01_description mapping.launch
 ``` 
 * **Add Robot Model in Rviz**
-  - Add and Select Map.
-  ![map_add.png](map_add.png)
+- Add and Select Map.
+![map_add.png](assets/map_add.png)
 
-  - Select Topic in Map to /map.
-  ![map_topic](assets/map_topic.png)
+- Select Topic in Map to /map.
+![map_topic](assets/map_topic.png)
 
-  - Add and Select Laserscan.
-  ![laserscan.png](assets/laserscan.png)
+- Add and Select Laserscan.
+![laserscan.png](assets/laserscan.png)
 
-  - Set Topic to /scan.
-  ![laserscan_topic.png](assets/laserscan_topic.png)
+- Set Topic to /scan.
+![laserscan_topic.png](assets/laserscan_topic.png)
 
-  - Increase the size parameter of the laser scan to 0.05(m)
-  ![size.png](assets/size.png)
+- Increase the size parameter of the laser scan to 0.05(m)
+![size.png](assets/size.png)
 
-## <span id="4">0. Control Robot Movement
+## <span id="4">4. Control Robot Movement
 
 ## Keyboard teleop mode:
 The ~/catkin_ws/src/myrobot_control/scripts folder contains the *myrobot_key* node, which is the teleop node. There is already a standard teleop node implementation available (for the turtlebot), we simply reused the node. Then a remapping is done from the turtlebot_teleop_keyboard/cmd_vel to /cmd_vel of our robot in the *keyboard_teleop.launch* file.
 
-### To drive around the robot for mapping the world use teleop_twist_keyboard package - Open another terminal and run the following commands
+### To drive around the robot for mapping the world use teleop_twist_keyboard package - Open another terminal and run the following commands:
 
 * Start the teleop node:
 ```
 roslaunch teleop_twist_keyboard teleop_twist_keyboard.py
 ```
-![teleop_key.png](assets/teleop_key.png)
 Here are some keyboard controls for Teleop Twist Keyboard: 
+
 i: Forward
 ,: Backwards
 k: Stop
@@ -172,5 +171,5 @@ l: Rotate right in place
 **Notice that the teleop node receives keypresses only when the terminal window is active.**
 ![mapping.png](assets/mapping.png)
 
-## <span id="5">0. Saving Map
-## <span id="6">0. Acknowledgement
+## <span id="5">5. Saving Map
+## <span id="6">6. Acknowledgement
